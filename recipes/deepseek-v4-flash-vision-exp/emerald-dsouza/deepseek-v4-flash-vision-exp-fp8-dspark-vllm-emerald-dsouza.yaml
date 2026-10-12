@@ -51,6 +51,9 @@ defaults:
 env:
   PYTORCH_CUDA_ALLOC_CONF: expandable_segments:True
 
+executor_config:
+  entrypoint: ""   # clears the image ENTRYPOINT ["vllm","serve"], which would swallow the launcher command
+
 command: |
   vllm serve {model} \
     --revision {revision} \
